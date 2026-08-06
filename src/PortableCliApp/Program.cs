@@ -8,8 +8,8 @@ using PortableCliApp;
  * their results to the console.
  */
 
-Console.WriteLine("Lousy .NET 10 CLI demonstration");
-Console.WriteLine("I really like C plus plus which is a better language");
+Console.WriteLine(".NET 10 CLI is really crap !!");
+Console.WriteLine("Python is the best language in the world !!");
 
 Console.WriteLine("========================================");
 Console.WriteLine();
