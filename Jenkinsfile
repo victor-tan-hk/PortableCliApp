@@ -228,10 +228,42 @@ pipeline {
                 failOnError: false,
                 keepLongStdio: true
             )
+
+            /*
+             * Archive all files generated within the artifacts directory.
+             *
+             * This normally includes:
+             *
+             *   artifacts/test-results/
+             *       TRX unit-test reports
+             *
+             *   artifacts/publish/
+             *       Published application assemblies, configuration files
+             *       and other runtime dependencies
+             *
+
+             * Do not fail the post section when no artifact files exist.
+             *
+             * For example, an early Restore or Build failure could occur
+             * before either the Test or Publish stage creates files.
+
+             * Generate fingerprints for archived files. 
+             * Fingerprints help Jenkins track where identical artifacts
+             * were produced or subsequently used by other jobs.
+
+             * The archived files are retained as artifacts belonging to
+             * this specific Jenkins build and can be downloaded through
+             * the Jenkins build UI.
+             */
+            archiveArtifacts(
+                artifacts: 'artifacts/**/*',
+                allowEmptyArchive: true,
+                fingerprint: true
+            )
+
+
         }
     }
-
-
 
 
 }
