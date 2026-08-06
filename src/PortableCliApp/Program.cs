@@ -8,7 +8,9 @@ using PortableCliApp;
  * their results to the console.
  */
 
-Console.WriteLine("Cross-platform .NET 10 CLI demonstration");
+Console.WriteLine("Lousy .NET 10 CLI demonstration");
+Console.WriteLine("I really like C plus plus which is a better language");
+
 Console.WriteLine("========================================");
 Console.WriteLine();
 
