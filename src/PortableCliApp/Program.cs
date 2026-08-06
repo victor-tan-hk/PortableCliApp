@@ -10,7 +10,6 @@ using PortableCliApp;
 
 Console.WriteLine(".NET 10 CLI is really crap !!");
 Console.WriteLine("Python is the best language in the world !!");
-
 Console.WriteLine("========================================");
 Console.WriteLine();
 
