@@ -16,7 +16,7 @@ pipeline {
      */
     environment {
 
-        /*
+        /*****
         * Place the URL for your remote repo (GitHub, BitBucket) here
         */
         REMOTE_REPO_URL = 'https://github.com/victor-tan-hk/PortableCliApp.git'
