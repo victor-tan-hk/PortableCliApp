@@ -9,26 +9,32 @@ pipeline {
 
     agent any
 
-    /*****
+    /*
      * Environment variables are accessible throughout the Pipeline.
-     *********
+     *
      * Adjust these values accordingly 
      */
     environment {
 
-        /*****
+        /*
         * Place the URL for your remote repo (GitHub, BitBucket) here
         */
-        REMOTE_REPO_URL = 'https://github.com/victor-tan-hk/PortableCliApp.git'
+        REMOTE_REPO_URL = 'https://github.com/victor-tan-hk/DotNetWebApp.git'
+
+        /*
+        * Place a random port in your assigned port range here
+        */
+        APP_PORT = 'http://0.0.0.0:7070'
 
 
-        SOLUTION_FILE = 'PortableCliApp.slnx'
+
+        SOLUTION_FILE = 'DotNetWebApp.slnx'
 
         APP_PROJECT =
-            'src/PortableCliApp/PortableCliApp.csproj'
+            'src/DotNetWebApp.Api/DotNetWebApp.Api.csproj'
 
         TEST_PROJECT =
-            'tests/PortableCliApp.Tests/PortableCliApp.Tests.csproj'
+            'tests/DotNetWebApp.Tests/DotNetWebApp.Tests.csproj'
 
         // ${WORKSPACE} typically refers to the absolute filesystem path of 
         // the workspace allocated to the current Jenkins build.
@@ -44,7 +50,14 @@ pipeline {
             
     }
 
-
+    /*
+    * This version has no deploy, only publish 
+    *
+    * This pipeline job will complete in a usual manner
+    *
+    * There is no need to explicitly abort it from the UI
+    *
+    */ 
 
     stages {
 
@@ -172,20 +185,6 @@ pipeline {
             }
         }
 
-        stage('Deploy') {
-            steps {
-                /*
-                 * Run the published CLI application once.
-                 *
-                 * This is a simple deployment verification or smoke test
-                 * confirming that the published application can start.
-                 */
-                sh '''
-                    dotnet \
-                        "${PUBLISH_DIRECTORY}/PortableCliApp.dll"
-                '''
-            }
-        }
     }
 
     /*
@@ -202,6 +201,7 @@ pipeline {
      */
 
     post {
+
         always {
 
             /*
@@ -229,6 +229,12 @@ pipeline {
                 keepLongStdio: true
             )
 
+
+
+        }
+
+        success {
+
             /*
              * Archive all files generated within the artifacts directory.
              *
@@ -241,11 +247,6 @@ pipeline {
              *       Published application assemblies, configuration files
              *       and other runtime dependencies
              *
-
-             * Do not fail the post section when no artifact files exist.
-             *
-             * For example, an early Restore or Build failure could occur
-             * before either the Test or Publish stage creates files.
 
              * Generate fingerprints for archived files. 
              * Fingerprints help Jenkins track where identical artifacts
@@ -263,6 +264,9 @@ pipeline {
 
 
         }
+
+
+
     }
 
 
