@@ -9,7 +9,7 @@ pipeline {
 
     agent any
 
-    /****
+    /*****
      * Environment variables are accessible throughout the Pipeline.
      *********
      * Adjust these values accordingly 
