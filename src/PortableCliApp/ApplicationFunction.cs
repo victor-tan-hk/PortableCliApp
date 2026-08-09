@@ -47,7 +47,7 @@ public static class ApplicationFunctions
     /// <summary>
     /// Adds two integer values.
     /// </summary>
-    public static int Add(int firstNumber int secondNumber)
+    public static int Add(int firstNumber, int secondNumber)
     {
         return firstNumber + secondNumber;
 
