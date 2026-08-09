@@ -42,13 +42,6 @@
     -->
     <TreatWarningsAsErrors>true</TreatWarningsAsErrors>
 
-    <!--
-      Explicitly turn the platform compatibility warning into an error.
-
-      CA1416 identifies unguarded calls to platform-specific APIs, such
-      as APIs that are supported only on Windows.
-    -->
-    <WarningsAsErrors>$(WarningsAsErrors);CA1416</WarningsAsErrors>
 
     <!--
       Produce repeatable compiler output when inputs are unchanged.
